@@ -11,7 +11,7 @@ def check_decoded(actual, expected)
   expect(actual).to eq expected.dup.force_encoding(Encoding::BINARY)
 end
 
-describe "Attachments" do
+RSpec.describe "Attachments" do
 
   before(:each) do
     @mail = Mail.new
@@ -211,7 +211,7 @@ describe "Attachments" do
 
 end
 
-describe "reading emails with attachments" do
+RSpec.describe "reading emails with attachments" do
   describe "test emails" do
 
     it "should find the attachment using content location" do
@@ -234,8 +234,19 @@ describe "reading emails with attachments" do
       expect(mail.attachments[0].decoded.length).to eq 1026
     end
 
+    it "should decode an attachment and non-ascii text" do
+      mail = read_fixture('emails/attachment_emails/attachment_pdf_non_ascii.eml')
+      expect(mail.attachments[0].decoded.length).to eq 1026
+    end
+
     it "should decode an attachment with linefeeds" do
       mail = read_fixture('emails/attachment_emails/attachment_pdf_lf.eml')
+      expect(mail.attachments.size).to eq(1)
+      expect(mail.attachments[0].decoded.length).to eq 1026
+    end
+
+    it "should decode an attachment with linefeeds and non-ascii text" do
+      mail = read_fixture('emails/attachment_emails/attachment_pdf_non_ascii_lf.eml')
       expect(mail.attachments.size).to eq(1)
       expect(mail.attachments[0].decoded.length).to eq 1026
     end
@@ -311,7 +322,7 @@ limitMAIL
   end
 end
 
-describe "attachment order" do
+RSpec.describe "attachment order" do
   it "should be preserved instead  when content type exists" do
     mail = Mail.new do
       to "aaaa@aaaa.aaa"

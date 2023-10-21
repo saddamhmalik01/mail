@@ -1,25 +1,3 @@
-MIME-Version: 1.0 (Apple Message framework v730)
-Content-Type: multipart/mixed; boundary=Apple-Mail-13-196941151
-Message-Id: <9169D984-4E0B-45EF-82D4-8F5E53AD7012@example.com>
-From: foo@example.com
-Subject: testing
-Date: Mon, 6 Jun 2005 22:21:22 +0200
-To: blah@example.com
-
-
---Apple-Mail-13-196941151
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=ISO-8859-1;
-	delsp=yes;
-	format=flowed
-
-This is the first part.
-
---Apple-Mail-13-196941151
-Content-Type: message/rfc822;
-  name="ForwardedMessage.eml";
-
 From xxxx@xxxx.com Tue May 10 11:28:07 2005
 Return-Path: <xxxx@xxxx.com>
 X-Original-To: xxxx@xxxx.com
@@ -51,9 +29,9 @@ Date: Tue, 10 May 2005 11:26:39 -0600
 From: Test Tester <xxxx@xxxx.com>
 Reply-To: Test Tester <xxxx@xxxx.com>
 To: xxxx@xxxx.com, xxxx@xxxx.com
-Subject: Another PDF
-MIME-Version: 1.0
-Content-Type: multipart/mixed;
+Subject: Another PDF with 🎉 Unicode chars in it 🍿
+Mime-Version: 1.0
+Content-Type: multipart/mixed; 
 	boundary="----=_Part_2192_32400445.1115745999735"
 X-Virus-Scanned: amavisd-new at textdrive.com
 
@@ -63,7 +41,7 @@ Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 
 Just attaching another PDF, here, to see what the message looks like,
-and to see if I can figure out what is going wrong here.
+and to see if I can figure out what is going wrong here.    Â
 
 ------=_Part_2192_32400445.1115745999735
 Content-Type: application/pdf; name="broken.pdf"
@@ -90,4 +68,3 @@ HSVNswdVsaOUSAWq9aYhDtGDaoG5a3lBGkYt/lFlBFt1UqrYnzVtUpUQnLiZeouKgf1KhRBViRRk
 ExepJCzTwEmFDalIRbLEGtw0gfpESOpIAF/NnpPzcVCG86s0g2DuSyd41uhNGbEgaSrWEXORErbw
 ------=_Part_2192_32400445.1115745999735--
 
---Apple-Mail-13-196941151--

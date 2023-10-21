@@ -30,7 +30,7 @@ From: Test Tester <xxxx@xxxx.com>
 Reply-To: Test Tester <xxxx@xxxx.com>
 To: xxxx@xxxx.com, xxxx@xxxx.com
 Subject: Another PDF with 🎉 Unicode chars in it 🍿
-MIME-Version: 1.0
+Mime-Version: 1.0
 Content-Type: multipart/mixed; 
 	boundary="----=_Part_2192_32400445.1115745999735"
 X-Virus-Scanned: amavisd-new at textdrive.com
@@ -41,7 +41,7 @@ Content-Transfer-Encoding: quoted-printable
 Content-Disposition: inline
 
 Just attaching another PDF, here, to see what the message looks like,
-and to see if I can figure out what is going wrong here.
+and to see if I can figure out what is going wrong here.    Â
 
 ------=_Part_2192_32400445.1115745999735
 Content-Type: application/pdf; name="broken.pdf"

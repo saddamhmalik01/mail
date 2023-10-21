@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'spec_helper'
 
-describe Mail::Part do
+RSpec.describe Mail::Part do
 
   it "should not add a default Content-ID" do
     part = Mail::Part.new
@@ -206,7 +206,7 @@ ENDPART
     end
 
     it "retains specified encoding even though it isn't lowest cost" do
-      part = Mail::Part.new.tap do |part|
+      mail = Mail::Part.new.tap do |part|
         part.header[:content_disposition] = 'attachment; filename="unnamed"'
         part.content_type  = 'text/plain'
         # part.body          = 'a' * 998
@@ -214,7 +214,7 @@ ENDPART
         part.body.encoding = 'base64'
       end
 
-      part_body_encoding = part.to_s.scan(/Content-Transfer-Encoding: (.+)\r$/).last.first
+      part_body_encoding = mail.to_s.scan(/Content-Transfer-Encoding: (.+)\r$/).last.first
       expect(part_body_encoding).to eq('base64')
     end
   end

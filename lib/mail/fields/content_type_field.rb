@@ -1,7 +1,5 @@
 # encoding: utf-8
 # frozen_string_literal: true
-require 'mail/fields/named_structured_field'
-require 'mail/fields/parameter_hash'
 
 module Mail
   class ContentTypeField < NamedStructuredField #:nodoc:
@@ -129,15 +127,16 @@ module Mail
         val.downcase!
       end
 
+      val_chomp = val.chomp
       case
-      when val.chomp =~ /^\s*([\w\-]+)\/([\w\-]+)\s*;\s?(ISO[\w\-]+)$/i
+      when val_chomp =~ /^\s*([\w\-]+)\/([\w\-]+)\s*;\s?(ISO[\w\-]+)$/i
         # Microsoft helper:
         # Handles 'type/subtype;ISO-8559-1'
         "#{$1}/#{$2}; charset=#{Utilities.quote_atom($3)}"
-      when val.chomp =~ /^text;?$/i
+      when /^text;?$/i.match?(val_chomp)
         # Handles 'text;' and 'text'
         "text/plain;"
-      when val.chomp =~ /^(\w+);\s(.*)$/i
+      when val_chomp =~ /^(\w+);\s(.*)$/i
         # Handles 'text; <parameters>'
         "text/plain; #{$2}"
       when val =~ /([\w\-]+\/[\w\-]+);\scharset="charset="(\w+)""/i
@@ -153,7 +152,7 @@ module Mail
         params = params.map { |i| i.split(/\s*\=\s*/, 2) }
         params = params.map { |i| "#{i[0]}=#{Utilities.dquote(i[1].to_s.gsub(/;$/,""))}" }.join('; ')
         "#{type}; #{params}"
-      when val =~ /^\s*$/
+      when /^\s*$/.match?(val)
         'text/plain'
       else
         val
